@@ -1,21 +1,15 @@
-const getAllJobs = async (req, res) => {
-  res.send("get All Jobs")
-}
+const {
+  getAllJobs,
+  getJob,
+  createJob,
+  updateJob,
+  deleteJob,
+} = require("../controllers/jobs")
 
-const getJob = async (req, res) => {
-  res.send("get Job")
-}
+const express = require("express")
+const router = express.Router()
 
-const createJob = async (req, res) => {
-  res.send("create Job")
-}
+router.route("/").get(getAllJobs).post(createJob)
+router.route("/:id").get(getJob).patch(updateJob).delete(deleteJob)
 
-const updateJob = async (req, res) => {
-  res.send("update Job")
-}
-
-const deleteJob = async (req, res) => {
-  res.send("delete Job")
-}
-
-module.exports = { getAllJobs, getJob, createJob, updateJob, deleteJob }
+module.exports = router
