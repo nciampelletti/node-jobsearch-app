@@ -3,6 +3,8 @@ const jwt = require("jsonwebtoken")
 
 const { UnauthenticatedError } = require("../errors")
 
+//called on each and every job related request
+//to validate token and retrieve userId from token
 const auth = async (req, res, next) => {
   //check header
   const authHeader = req.headers.authorization
